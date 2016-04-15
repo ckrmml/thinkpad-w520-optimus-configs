@@ -19,15 +19,18 @@ following software installed:
 - xf86-video-intel 1:2.99.917+587+gc186d4d-1 (yes, that's the version as reported by pacman)
 - bbswitch 0.8-44
 
-Additionally, bumblebee service must be enabled:
-`sudo systemctl enable bumblebeed.service`
-
 The `bin` directory contains some scripts I use to automate switching between modes.
+
+Using the scripts in the `bin` folder, I'm running with bumblebee service disabled,
+because manual intervention is required anyway:
+- you have to start `intel-virtual-output` after NVidia card becomes active to be able to access the outputs wired to the nvidia card
+- you have to kill the second X Server running on the NVidia card before deactivating the driver
+- so, just disable it: `sudo systemctl disable bumblebeed.service`
 
 ## Resources
 
 - [scyth's blog](http://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/)
-  - gave me hope and made me by that W520 in the first place
+  - gave me hope and made me buy that W520 in the first place
   - provides the - IMHO essential - hint to set `PMMethod=none`
   - also important: `KeepUnusedXServer=true`
 - [Arch Wiki](https://wiki.archlinux.org/index.php/NVIDIA_Optimus)
