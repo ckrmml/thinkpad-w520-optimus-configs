@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# enable nvidia
+sudo tee /proc/acpi/bbswitch <<< ON
+
+# load required modules
+sudo modprobe nvidia nvidia_modeset
+
+# this thing works on arch, but not on nixos
+# sudo nvidia-modprobe
+
+# start xserver - the config settings prevent it from shutting down when the
+# program (true) finishs, so xserver on :8 keeps running
+optirun true
+
+# enable pass-through of outputs wired to NVidia card
+intel-virtual-output
+
+

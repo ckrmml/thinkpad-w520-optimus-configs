@@ -1,0 +1,8 @@
+# set everything up for external monitor
+ext
+
+# without waiting, xrandr can't see the provided modes / output
+sleep 1
+
+# enable 2nd monitor
+xrandr --output VIRTUAL6 --mode VIRTUAL6.738-3840x2160 --output LVDS1 --auto --pos 960x2160

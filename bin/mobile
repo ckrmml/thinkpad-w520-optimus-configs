@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# remove modules
+sudo modprobe bbswitch
+
+# kill the xserver running on display :8 - that's the nvidia one
+sudo pkill -f "Xorg :8"
+
+# wait until it is shut down properly
+
+sleep 1
+
+# remove modules
+sudo rmmod nvidia_modeset nvidia
+
+# turn nvidia off
+sudo tee /proc/acpi/bbswitch <<< OFF
+
